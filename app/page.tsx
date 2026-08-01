@@ -68,25 +68,59 @@ export default function Home() {
     journey.current?.querySelectorAll("article")[next]?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
   };
 
+  const lovesMeLines = [
+    "She loves me! Obviously 💛",
+    "Confirmed: Pikoloo is still obsessed with me 🌻",
+    "Another petal, another undeniable YES 😌",
+    "Scientific evidence says: she loves me 🧪💛",
+    "Bubu loves Bubla — case closed 🥰",
+    "She chose me again. Excellent decision 😎",
+    "The sunflower knows what’s up 🌻",
+    "Plot status: deeply, madly, cutely in love 💕",
+  ];
+  
+  const lovesMeNotLines = [
+    "She loves me not… suspicious 🤨",
+    "Clearly, this petal is defective 🧐",
+    "Fake news. Pluck another one immediately 🚨",
+    "This petal woke up and chose lies 😤",
+    "सनम, this result is under investigation 🔍",
+    "Nope. The sunflower miscalculated 🌻",
+    "कंटाप मारूँगी… said Shruti to this lying petal 👋",
+    "Recount demanded! We do not accept this result 🗳️",
+  ];
+  
+  const randomLine = (lines) =>
+    lines[Math.floor(Math.random() * lines.length)];
+  
   const pluck = () => {
     const id = Date.now();
+  
     const flight = {
       id,
-      x: Math.round((Math.random() - .5) * 340),
+      x: Math.round((Math.random() - 0.5) * 340),
       y: Math.round(170 + Math.random() * 230),
-      r: Math.round((Math.random() - .5) * 720),
-      drift: Math.round((Math.random() - .5) * 90),
-      duration: Number((.8 + Math.random() * .85).toFixed(2)),
+      r: Math.round((Math.random() - 0.5) * 720),
+      drift: Math.round((Math.random() - 0.5) * 90),
+      duration: Number((0.8 + Math.random() * 0.85).toFixed(2)),
     };
+  
     setFlights((old) => [...old.slice(-11), flight]);
+  
     if (petals <= 1) {
       setPetals(14);
-      setPetalLine("Plot twist: this flower only knows ‘she loves me’ 🌻");
+      setPetalLine(
+        "Plot twist: this flower only knows ‘she loves me’ 🌻 Try again, Bubu!"
+      );
       return;
     }
+  
     const left = petals - 1;
     setPetals(left);
-    setPetalLine(left % 2 ? "She loves me not… suspicious 🤨" : "She loves me! Obviously 💛");
+  
+    setPetalLine(
+      randomLine(left % 2 ? lovesMeNotLines : lovesMeLines)
+    );
   };
 
   const revealStack = () => setStackIndex((value) => (value + 1) % stackPhotos.length);

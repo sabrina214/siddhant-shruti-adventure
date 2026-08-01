@@ -11,9 +11,9 @@ export const milestones = [
   {
     stamp: "CHAPTER 01",
     title: "The day our story began",
-    place: "Add your first-meeting place",
-    date: "Add date",
-    note: "Replace this with the tiny detail you still remember from the first time you met Shruti.",
+    place: "Something cute came out tragedy, remember?",
+    date: "13.11.2024",
+    note: "Amidst all that morning on-the-way-to office traffic !",
     icon: "✦",
     media: {
       type: "image",
@@ -24,22 +24,22 @@ export const milestones = [
   {
     stamp: "CHAPTER 02",
     title: "When ‘you’ became ‘us’",
-    place: "Add your special place",
-    date: "Add date",
-    note: "A turning point, a ridiculous conversation, or the moment everything quietly changed.",
+    place: "Home away from home",
+    date: "05.07.2026",
+    note: "The conscious kiss !",
     icon: "♡",
     media: {
       type: "video",
-      src: "/media/consious-kiss.mp4",
-      alt: "The conscious kiss — when everything quietly became us",
+      src: "/media/the-dance.mp4",
+      alt: "The dance — absolutely no choreography, maximum joy",
     },
   },
   {
     stamp: "CHAPTER 03",
     title: "Our favourite adventure",
-    place: "Add trip destination",
-    date: "Add date",
-    note: "Drop in a photo, a short video, and the story that still makes both of you laugh.",
+    place: "Some beach in Goa",
+    date: "16.03.2025",
+    note: "Days when we had to secretly fall for one another",
     icon: "✈",
     media: {
       type: "image",
@@ -56,8 +56,8 @@ export const milestones = [
     icon: "☀",
     media: {
       type: "image",
-      src: "/media/milaap-after-trek.jpeg",
-      alt: "After the trek at Milaap — ordinary magic in motion",
+      src: "/media/pawna-1.jpeg",
+      alt: "Pawna — lakeside calm between all the madness",
     },
   },
   {
@@ -167,8 +167,8 @@ export const trailPhotos: Array<{ label: string; media: MediaItem | null }> = [
 export const filmMedia: Array<MediaItem | null> = [
   {
     type: "video",
-    src: "/media/the-dance.mp4",
-    alt: "The dance — absolutely no choreography, maximum joy",
+    src: "/media/consious-kiss.mp4",
+    alt: "The conscious kiss — when everything quietly became us",
   },
   {
     type: "video",
@@ -182,13 +182,9 @@ export const filmMedia: Array<MediaItem | null> = [
   },
   {
     type: "image",
-    src: "/media/pawna-1.jpeg",
-    alt: "Pawna — lakeside calm between all the madness",
+    src: "/media/milaap-after-trek.jpeg",
+    alt: "After the trek at Milaap — ordinary magic in motion",
   },
-  null,
-  null,
-  null,
-  null,
 ];
 
 export const songs = [
