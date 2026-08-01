@@ -6,7 +6,7 @@ export type MediaItem = {
 };
 
 // Edit this file to add real dates, stories, photos, videos and songs.
-// Put media files in public/media and use paths beginning with /media/.
+// Put media files in public/media — reference them from the site root as /media/…
 export const milestones = [
   {
     stamp: "CHAPTER 01",

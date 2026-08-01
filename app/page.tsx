@@ -1,6 +1,7 @@
 "use client";
 
 import { CSSProperties, useEffect, useRef, useState } from "react";
+import { assetUrl } from "./asset-url";
 import { filmMedia, MediaItem, milestones, songs, stackPhotos, trailPhotos } from "./content";
 
 const noLines = ["कंटाप मारूँगी? Still no 😌", "Sunn na, chup reh naa… click YES!", "सनम bsdk! Wrong button 😂", "No is currently on vacation ✈️", "Nice try, Pikoloo. Only one route left."];
@@ -97,9 +98,20 @@ export default function Home() {
 
   const renderMedia = (media: MediaItem | null, fallback: React.ReactNode) => {
     if (!media) return fallback;
-    if (media.type === "video") return <video src={media.src} poster={media.poster} aria-label={media.alt} controls playsInline preload="metadata" />;
+    if (media.type === "video") {
+      return (
+        <video
+          src={assetUrl(media.src)}
+          poster={media.poster ? assetUrl(media.poster) : undefined}
+          aria-label={media.alt}
+          controls
+          playsInline
+          preload="metadata"
+        />
+      );
+    }
     // eslint-disable-next-line @next/next/no-img-element
-    return <img src={media.src} alt={media.alt} loading="lazy" />;
+    return <img src={assetUrl(media.src)} alt={media.alt} loading="lazy" />;
   };
 
   return (
@@ -111,7 +123,7 @@ export default function Home() {
           <p>NOW PLAYING FOR S + S</p>
           <h3>{songs[songIndex].title}</h3>
           <small>{songs[songIndex].subtitle}</small>
-          {songs[songIndex].audioSrc ? <audio key={songs[songIndex].audioSrc} src={songs[songIndex].audioSrc} controls autoPlay={started} /> : <iframe title={`${songs[songIndex].title} music player`} src={`https://www.youtube.com/embed/${songs[songIndex].youtubeId}?autoplay=${started ? 1 : 0}&playsinline=1&rel=0`} allow="autoplay; encrypted-media; picture-in-picture" />}
+          {songs[songIndex].audioSrc ? <audio key={songs[songIndex].audioSrc} src={assetUrl(songs[songIndex].audioSrc)} controls autoPlay={started} /> : <iframe title={`${songs[songIndex].title} music player`} src={`https://www.youtube.com/embed/${songs[songIndex].youtubeId}?autoplay=${started ? 1 : 0}&playsinline=1&rel=0`} allow="autoplay; encrypted-media; picture-in-picture" />}
           <div>{songs.map((song, i) => <button className={i === songIndex ? "active" : ""} key={song.youtubeId} onClick={() => { setSongIndex(i); setMusicOpen(true); }}>{i + 1}</button>)}</div>
           <span>Tap play if your browser pauses autoplay.</span>
         </div>
@@ -173,7 +185,7 @@ export default function Home() {
         <header><p className="eyebrow">THE VERY UNOFFICIAL NICKNAME ARCHIVE</p><h2>Every name has a story.</h2></header>
         <div className="nickname-grid">
           <article><span>🎬</span><small>MERI PYAARI BINDU</small><h3>Bubla</h3><p>A name born while watching a Bollywood movie—and somehow it stayed long after the credits.</p></article>
-          <article className="dudu-card">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/dudu-bubu-reference.png" alt="Dudu and Bubu animated characters, one playfully holding a slipper"/><div><small>THE INSTA ERA</small><h3>Dudu–Bubu</h3><p>After the animated trend, you both became Bubu. Naturally, the chaos came along too.</p></div></article>
+          <article className="dudu-card">{/* eslint-disable-next-line @next/next/no-img-element */}<img src={assetUrl("/dudu-bubu-reference.png")} alt="Dudu and Bubu animated characters, one playfully holding a slipper"/><div><small>THE INSTA ERA</small><h3>Dudu–Bubu</h3><p>After the animated trend, you both became Bubu. Naturally, the chaos came along too.</p></div></article>
           <article><span>☀️</span><small>POST-GOA SHRUTI</small><h3 className="hindi">कालू</h3><p>Because Goa left her gloriously, unmistakably tanned. A temporary tan; a permanent nickname.</p></article>
           <article><span>🤍</span><small>THE COMEBACK</small><h3>Goru</h3><p>When her usual skin tone returned, a new name was issued immediately. Fair? No. Official? Absolutely.</p></article>
         </div>
