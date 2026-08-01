@@ -42,8 +42,10 @@ export default defineConfig(async () => {
 
   // Wrangler snapshots its log path while the Cloudflare plugin is imported.
   const { cloudflare } = await import("@cloudflare/vite-plugin");
+  const pagesBase = process.env.GITHUB_PAGES_BASE?.trim();
 
   return {
+    base: pagesBase && pagesBase !== "/" ? pagesBase : undefined,
     server: {
       host: "0.0.0.0",
       allowedHosts: ["terminal.local"],
